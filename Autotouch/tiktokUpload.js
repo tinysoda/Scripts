@@ -15,9 +15,9 @@ function swipeVertically(times) {
 }
 /**
 * Select the latest Media
-* @param {Number} num1
-* @param {Number} um
-* @return {Number} sum
+* @param {Number} x
+* @param {Number} y
+* 
 */
 function latestMedia(x, y) {
     let [color, error] = getColor(x, y)
