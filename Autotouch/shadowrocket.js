@@ -20,7 +20,7 @@ function tap(no, x, y) {
 // let offColor="15263978";
 let onColor = "16777215";
 at.appKill(shadowrocket);
-at.usleep(1000000);
+at.usleep(1500000);
 at.appRun(shadowrocket);
 at.usleep(2000000);
 let [color, error] = getColor(650, 200)
@@ -32,3 +32,5 @@ if (color != onColor) {
 }
 at.usleep(500000);
 // at.appKill(shadowrocket);
+
+
