@@ -31,6 +31,30 @@ function latestMedia(x, y) {
     }
 }
 
+/**
+ * Adding Text to video
+ */
+function inputText() {
+    tap(1, 735, 500)
+    usleep(500000)
+    // Insert a string 
+
+    tap(1, 735, 100)
+
+}
+
+function moveText() {
+    touchDown(0, 325, 680)
+    usleep(16000)
+    for (let y = 680; y >= 100; y -= 50) {
+        usleep(12000);
+        touchMove(0, 325, y);
+    }
+    touchUp(0, 325, 100)
+    usleep(500000)
+
+}
+
 function moveText() {
     // for (let i = 0; i < 5; i++) {
     touchDown(1, 350, 680);
@@ -43,22 +67,6 @@ function moveText() {
     // }
 }
 
-/**
- * Adding Text to video
- */
-function inputText() {
-    // Select the text icon
-    tap(1, 735, 500)
-    usleep(500000)
-    // TODO - Insert a string 
-
-    // Select Done
-    tap(1, 735, 100)
-    // move text to 325,100
-    moveText()
-}
-
-
 function tap(no, x, y) {
     for (i = 0; i < no; i++) {
         touchDown(0, x, y);
@@ -66,32 +74,7 @@ function tap(no, x, y) {
         touchUp(0, x, y);
     }
 }
-function tikTokUpload() {
-    //tap bottom upload button 
-    tap(1, 325, 1300)
-    usleep(2000000)
-    // tap media button
-    tap(1, 625, 1100)
-    usleep(2000000)
-    //select the latest media
-    latestMedia(625, 1100);
-    usleep(16000)
-    // Adding text
-    // inputText();
 
-
-}
-let tiktok = "com.zhiliaoapp.musically";
-appKill(tiktok);
-usleep(1000000);
-appRun(tiktok);
-usleep(3000000);
-swipeVertically(1);
-usleep(500000);
-toast("uploading");
-tikTokUpload();
-
-
-const tikTokState = appState(tiktok);
-
-usleep(1000000);
+// inputText()
+swipeVertically()
+// moveText()
