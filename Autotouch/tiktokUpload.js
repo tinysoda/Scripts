@@ -78,6 +78,12 @@ function tikTokUpload() {
     usleep(16000)
     // Adding text
     // inputText();
+    usleep(500000)
+    //Select the "NEXT" button
+    tap(1, 650, 1300)
+    // Select text field
+    usleep(500000)
+    tap(1, 300, 300)
 
 
 }
