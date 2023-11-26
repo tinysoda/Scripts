@@ -11,32 +11,9 @@ if ! command_exists yay; then
     sudo pacman -S --noconfirm yay
 fi
 
-# Install pamac-aur-git using yay if not installed
-if ! command_exists pamac; then
-    echo "Installing pamac-aur-git..."
-    yay -S --noconfirm pamac-aur-git
-    if [ $? -eq 0 ]; then
-        echo "pamac-aur-git has been successfully installed."
-    else
-        echo "Error: Installation of pamac-aur-git failed."
-        exit 1
-    fi
-else
-    echo "pamac is already installed. Skipping installation."
-fi
-
-# Install ibus if not installed
-if ! command_exists ibus; then
-    echo "Installing ibus..."
-    sudo pamac install --no-confirm ibus
-else
-    echo "ibus is already installed. Skipping installation."
-fi
-
-# Build ibus-bamboo if not installed
 if ! command_exists ibus-bamboo; then
     echo "Building ibus-bamboo..."
-    pamac build --no-confirm ibus-bamboo
+    yay -S --noconfirm ibus-bamboo
 else
     echo "ibus-bamboo is already installed. Skipping build."
 fi
