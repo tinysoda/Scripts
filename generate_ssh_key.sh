@@ -4,6 +4,7 @@
 
 # Set the email address
 email="rainguy.shy@gmail.com"
+user="tinysoda"
 
 # Generate SSH key
 ssh-keygen -o -t rsa -C "$email"
