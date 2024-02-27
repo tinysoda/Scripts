@@ -1,5 +1,8 @@
 @echo off
 
+echo Installing Visual Studio Code...
+curl -o vscode.exe -L https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
+start /wait vscode.exe /VERYSILENT /NORESTART
 
 echo Installing GitHub Desktop...
 curl -o githubdesktop.exe -L https://central.github.com/deployments/desktop/desktop/latest/win32
