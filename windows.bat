@@ -1,42 +1,69 @@
 @echo off
 
-:: Define download URLs
-set "vscode_url=https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
-set "fdm_url=https://www.freedownloadmanager.org/download/fdm/latest/x64/freedownloadmanager.exe"
-set "vlc_url=https://get.videolan.org/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
-set "github_url=https://desktop.githubusercontent.com/releases/2.8.0-rc2.GitHubDesktopSetup.exe"
-set "python_url=https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe"
+rem Define URLs and filenames for the installers
+set "VS_CODE_URL=https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+set "VS_CODE_FILE=vscode_installer.exe"
 
-:: Define installation paths
-set "install_dir=%TEMP%"
-set "vscode_installer=%install_dir%\vscode_installer.exe"
-set "fdm_installer=%install_dir%\fdm_installer.exe"
-set "vlc_installer=%install_dir%\vlc_installer.exe"
-set "github_installer=%install_dir%\github_installer.exe"
-set "python_installer=%install_dir%\python_installer.exe"
+set "VLC_URL=https://get.videolan.org/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
+set "VLC_FILE=vlc_installer.exe"
 
-:: Download software installers
-echo Downloading Visual Studio Code...
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%vscode_url%', '%vscode_installer%')"
-echo Downloading Free Download Manager...
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%fdm_url%', '%fdm_installer%')"
-echo Downloading VLC Media Player...
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%vlc_url%', '%vlc_installer%')"
-echo Downloading GitHub Desktop...
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%github_url%', '%github_installer%')"
-echo Downloading Python...
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%python_url%', '%python_installer%')"
+set "GIT_URL=https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe"
+set "GIT_FILE=git_installer.exe"
 
-:: Install software
-echo Installing Visual Studio Code...
-start /wait "" "%vscode_installer%" /silent /norestart
-echo Installing Free Download Manager...
-start /wait "" "%fdm_installer%" /silent /norestart
-echo Installing VLC Media Player...
-start /wait "" "%vlc_installer%" /L=1033 /S
-echo Installing GitHub Desktop...
-start /wait "" "%github_installer%" /S
-echo Installing Python...
-start /wait "" "%python_installer%" /quiet PrependPath=1 Include_test=0
+set "GITHUB_DESKTOP_URL=https://github.com/desktop/desktop/releases/download/release-2.9.6-windows-full/GitHubDesktopSetup-2.9.6-full.exe"
+set "GITHUB_DESKTOP_FILE=github_desktop_installer.exe"
 
-echo All installations completed.
+set "PYTHON_URL=https://www.python.org/ftp/python/3.10.1/python-3.10.1-amd64.exe"
+set "PYTHON_FILE=python_installer.exe"
+
+set "FDM_URL=https://dn3.freedownloadmanager.org/6/latest/fdm5_x64_setup.exe"
+set "FDM_FILE=fdm_installer.exe"
+
+set "THORIUM_URL=https://github.com/Alex313031/Thorium-Win/releases/download/M121.0.6167.204/thorium_AVX2_mini_installer.exe"
+set "THORIUM_FILE=thorium_installer.exe"
+
+rem Define silent install commands
+set "VS_CODE_COMMAND=%VS_CODE_FILE% /silent"
+set "VLC_COMMAND=%VLC_FILE% /S"
+set "GIT_COMMAND=%GIT_FILE% /VERYSILENT /NORESTART /NOCANCEL"
+set "GITHUB_DESKTOP_COMMAND=%GITHUB_DESKTOP_FILE% /S"
+set "PYTHON_COMMAND=%PYTHON_FILE% /quiet InstallAllUsers=1 PrependPath=1 Include_test=0"
+set "FDM_COMMAND=%FDM_FILE% /S"
+set "THORIUM_COMMAND=%THORIUM_FILE% /S"
+
+rem Download and install VSCode
+echo Downloading and installing VSCode...
+curl -o %VS_CODE_FILE% -L %VS_CODE_URL%
+start /wait %VS_CODE_COMMAND%
+
+rem Download and install VLC
+echo Downloading and installing VLC...
+curl -o %VLC_FILE% -L %VLC_URL%
+start /wait %VLC_COMMAND%
+
+rem Download and install Git
+echo Downloading and installing Git...
+curl -o %GIT_FILE% -L %GIT_URL%
+start /wait %GIT_COMMAND%
+
+rem Download and install GitHub Desktop
+echo Downloading and installing GitHub Desktop...
+curl -o %GITHUB_DESKTOP_FILE% -L %GITHUB_DESKTOP_URL%
+start /wait %GITHUB_DESKTOP_COMMAND%
+
+rem Download and install Python
+echo Downloading and installing Python...
+curl -o %PYTHON_FILE% -L %PYTHON_URL%
+start /wait %PYTHON_COMMAND%
+
+rem Download and install Free Download Manager
+echo Downloading and installing Free Download Manager...
+curl -o %FDM_FILE% -L %FDM_URL%
+start /wait %FDM_COMMAND%
+
+rem Download and install Thorium Browser
+echo Downloading and installing Thorium Browser...
+curl -o %THORIUM_FILE% -L %THORIUM_URL%
+start /wait %THORIUM_COMMAND%
+
+echo Installation completed.
