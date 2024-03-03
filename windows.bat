@@ -1,7 +1,7 @@
 @echo off
 
 rem Define URLs and filenames for the installers
-set "VS_CODE_URL=https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+set "VS_CODE_URL=https://vscode.download.prss.microsoft.com/dbazure/download/stable/019f4d1419fbc8219a181fab7892ebccf7ee29a2/VSCodeUserSetup-x64-1.87.0.exe"
 set "VS_CODE_FILE=vscode_installer.exe"
 
 set "VLC_URL=https://get.videolan.org/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
@@ -10,13 +10,13 @@ set "VLC_FILE=vlc_installer.exe"
 set "GIT_URL=https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe"
 set "GIT_FILE=git_installer.exe"
 
-set "GITHUB_DESKTOP_URL=https://github.com/desktop/desktop/releases/download/release-2.9.6-windows-full/GitHubDesktopSetup-2.9.6-full.exe"
+set "GITHUB_DESKTOP_URL=https://desktop.githubusercontent.com/github-desktop/releases/3.3.9-051b78a0/GitHubDesktopSetup-x64.exe"
 set "GITHUB_DESKTOP_FILE=github_desktop_installer.exe"
 
 set "PYTHON_URL=https://www.python.org/ftp/python/3.10.1/python-3.10.1-amd64.exe"
 set "PYTHON_FILE=python_installer.exe"
 
-set "FDM_URL=https://dn3.freedownloadmanager.org/6/latest/fdm5_x64_setup.exe"
+set "FDM_URL=https://files2.freedownloadmanager.org/6/latest/fdm_x64_setup.exe"
 set "FDM_FILE=fdm_installer.exe"
 
 set "THORIUM_URL=https://github.com/Alex313031/Thorium-Win/releases/download/M121.0.6167.204/thorium_AVX2_mini_installer.exe"
