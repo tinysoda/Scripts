@@ -31,6 +31,11 @@ set "PYTHON_COMMAND=%PYTHON_FILE% /quiet InstallAllUsers=1 PrependPath=1 Include
 set "FDM_COMMAND=%FDM_FILE% /S"
 set "THORIUM_COMMAND=%THORIUM_FILE% /S"
 
+rem Download and install Thorium Browser
+echo Downloading and installing Thorium Browser...
+curl -o %THORIUM_FILE% -L %THORIUM_URL%
+start /wait %THORIUM_COMMAND%
+
 rem Download and install VSCode
 echo Downloading and installing VSCode...
 curl -o %VS_CODE_FILE% -L %VS_CODE_URL%
@@ -61,9 +66,5 @@ echo Downloading and installing Free Download Manager...
 curl -o %FDM_FILE% -L %FDM_URL%
 start /wait %FDM_COMMAND%
 
-rem Download and install Thorium Browser
-echo Downloading and installing Thorium Browser...
-curl -o %THORIUM_FILE% -L %THORIUM_URL%
-start /wait %THORIUM_COMMAND%
 
 echo Installation completed.
