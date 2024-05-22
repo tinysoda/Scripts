@@ -9,7 +9,7 @@ user="tinysoda"
 # Configure Git
 echo "Configuring Git with username and email..."
 git config --global user.name "$user"
-git config --global user.email "$email"
+git config --global user.email $email
 echo "Git configured."
 
 # Define the default file for the SSH key
