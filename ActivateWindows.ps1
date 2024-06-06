@@ -1,1 +1,1 @@
-Invoke-Expression ((Invoke-WebRequest -Uri 'https://get.activated.win').Content)
+Invoke-WebRequest -Uri 'https://get.activated.win' | Invoke-Expression
