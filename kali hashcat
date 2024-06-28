@@ -1,1 +1,0 @@
-sudo hashcat -m 2500 -a 3 [capture_file.hccapx] ?a?a?a?a?a?a?a?a
