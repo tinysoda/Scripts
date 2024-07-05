@@ -1,5 +1,0 @@
-for full_file_path in *.rar *.zip; do
-    # skip anything but part 1, as it would just repeat extraction
-    if [[ $full_file_path =~ ^.+\.part[0-9]+\.rar$ && ! $full_file_path =~ ^.+\.part1\.rar$ ]]; then continue; fi
-    unar -d $full_file_path;
-done
