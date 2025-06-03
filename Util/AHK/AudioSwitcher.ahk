@@ -7,7 +7,7 @@ audioDevices := [
 
 currentIndex := 0
 
-#F2:: {
+#F1:: {
     global currentIndex, audioDevices
     currentIndex := Mod(currentIndex, audioDevices.Length) + 1
     SoundOutput(audioDevices[currentIndex])
