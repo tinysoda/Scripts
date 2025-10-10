@@ -3,7 +3,7 @@
 
 set -e
 
-MOUNTPOINT="/mnt/external"
+MOUNTPOINT="/mnt/external/Data"
 USER_NAME=$(whoami)
 USER_ID=$(id -u "$USER_NAME")
 GROUP_ID=$(id -g "$USER_NAME")
