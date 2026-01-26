@@ -7,7 +7,6 @@ def installArch():
     listToInstall = [
         "uv",
         "freedownloadmanager",
-        "spotify",
         "zip",
         "kodi",
         "input-leap-bin",
@@ -17,8 +16,7 @@ def installArch():
         "syncthing",
         "github-desktop-bin",
         "antigravity",
-        "telegram-desktop-bin",
-        ""
+        "telegram-desktop-bin"
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
