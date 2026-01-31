@@ -3,7 +3,6 @@ import subprocess
 import sys
 
 def installArch():
-    commandArch = ["paru", "-Sy","--noconfirm"]
     listToInstall = [
         "uv",
         "freedownloadmanager",
@@ -18,11 +17,34 @@ def installArch():
         "antigravity",
         "telegram-desktop-bin"
     ]
-    commandArch.extend(listToInstall)
+
     if not shutil.which("paru"):
-        subprocess.run(["pacman", "-Sy", "paru","--noconfirm"], check=True)
-    subprocess.run(commandArch, check=True)
-    print("\n✅ System update completed successfully.")
+        try:
+            subprocess.run(["pacman", "-Sy", "paru", "--noconfirm"], check=True)
+        except subprocess.CalledProcessError:
+            print("Failed to install paru. Exiting.")
+            sys.exit(1)
+
+    print("Syncing package database...")
+    try:
+        subprocess.run(["paru", "-Sy", "--noconfirm"], check=True)
+    except subprocess.CalledProcessError:
+        print("Warning: Database sync failed. Continuing with installation...")
+
+    failed_packages = []
+    for package in listToInstall:
+        print(f"Installing {package}...")
+        try:
+            subprocess.run(["paru", "-S", package, "--noconfirm"], check=True)
+        except subprocess.CalledProcessError:
+            print(f"⚠️ Failed to install {package}")
+            failed_packages.append(package)
+
+    if failed_packages:
+        print(f"\nCompleted with errors. Failed to install: {failed_packages}")
+    else:
+        print("\n✅ System update completed successfully.")
+    
     sys.exit(0)
 if __name__ == "__main__":
     installArch()
