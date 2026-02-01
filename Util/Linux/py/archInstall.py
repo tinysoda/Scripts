@@ -5,7 +5,7 @@ import sys
 def installArch():
     listToInstall = [
         "uv",
-        "freedownloadmanager",
+        "ab-download-manager-bin",
         "zip",
         "kodi",
         "input-leap-bin",
