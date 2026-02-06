@@ -15,7 +15,8 @@ def installArch():
         "syncthing",
         "github-desktop-bin",
         "antigravity",
-        "telegram-desktop-bin"
+        "telegram-desktop-bin",
+        "zoxide",
     ]
 
     if not shutil.which("paru"):
