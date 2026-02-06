@@ -54,6 +54,15 @@ if type -q zoxide; and type -q fzf
     end
 end
 
+
+# eza (ls replacement on 'l')
+if type -q eza
+    alias l "eza -lh --icons --git --group-directories-first"
+end
+
+
+
+
 {END_MARK}
 """
 
