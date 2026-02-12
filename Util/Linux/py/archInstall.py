@@ -5,18 +5,15 @@ import sys
 def installArch():
     listToInstall = [
         "uv",
-        "ab-download-manager-bin",
+        "ab-download-manger",
         "zip",
         "kodi",
         "input-leap-bin",
-        "protonup-qt-bin",
-        "gamemode",
         "okular",
         "syncthing",
         "github-desktop-bin",
         "antigravity",
-        "telegram-desktop-bin",
-        "zoxide",
+        "telegram-desktop-bin"
     ]
 
     if not shutil.which("paru"):
@@ -45,7 +42,7 @@ def installArch():
         print(f"\nCompleted with errors. Failed to install: {failed_packages}")
     else:
         print("\n✅ System update completed successfully.")
-    
+
     sys.exit(0)
 if __name__ == "__main__":
     installArch()
