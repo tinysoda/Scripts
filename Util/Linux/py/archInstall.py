@@ -18,6 +18,7 @@ def installArch():
         "telegram-desktop-bin",
         "fzf",
         "zoxide",
+        "qbittorrent"
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
