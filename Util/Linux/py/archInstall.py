@@ -8,7 +8,6 @@ def installArch():
         "uv",
         "ab-download-manager",
         "zip",
-        "kodi",
         "input-leap-bin",
         "okular",
         "syncthing",
@@ -18,7 +17,9 @@ def installArch():
         "telegram-desktop-bin",
         "fzf",
         "zoxide",
-        "qbittorrent"
+        "qbittorrent",
+        "stremio-enhanced-bin",
+        "vivaldi"
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
