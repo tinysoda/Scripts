@@ -19,7 +19,8 @@ def installArch():
         "zoxide",
         "qbittorrent",
         "stremio-enhanced-bin",
-        "vivaldi"
+        "vivaldi",
+        "aur/stremio-service-bin"
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
