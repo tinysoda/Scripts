@@ -13,7 +13,7 @@ def installArch():
         "syncthing",
         "github-cli",
         "lazygit",
-        "antigravity",
+        "vscodium-bin",
         "telegram-desktop-bin",
         "fzf",
         "zoxide",
