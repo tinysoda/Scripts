@@ -3,32 +3,35 @@ from pathlib import Path
 import datetime
 import shutil
 
-TARGET = Path.home() / ".zshrc"
+TARGET = Path.home() / ".config" / "fish" / "config.fish"
+
 START_MARK = "# >>> cachyos-workflow-tools >>>"
 END_MARK   = "# <<< cachyos-workflow-tools <<<"
 
 BLOCK = f"""{START_MARK}
+
 # ---- zoxide ----
-if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init zsh)"
-fi
+if type -q zoxide
+    zoxide init fish | source
+end
 
 # ---- fd instead of find ----
-if command -v fd &>/dev/null; then
+if type -q fd
     alias find="fd"
-fi
+end
 
 # ---- bat instead of cat ----
-if command -v bat &>/dev/null; then
+if type -q bat
     alias cat="bat --paging=never"
-fi
+end
 
 # ---- fzf defaults (colors + bat preview) ----
-if command -v fzf &>/dev/null; then
-    export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
-    export FZF_DEFAULT_OPTS="
+if type -q fzf
+    set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git"
+    set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+    set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git"
+
+    set -x FZF_DEFAULT_OPTS "
         --height=40%
         --layout=reverse
         --border
@@ -39,33 +42,34 @@ if command -v fzf &>/dev/null; then
         --color=fg:#cdd6f4,header:#89b4fa,info:#a6e3a1,pointer:#f38ba8
         --color=marker:#f38ba8,fg+:#ffffff,prompt:#89b4fa,hl+:#f38ba8
     "
-fi
+end
 
 # ---- zi : zoxide + fzf ----
-if command -v zoxide &>/dev/null && command -v fzf &>/dev/null; then
-    function zi() {{
-        local dir
-        dir=$(zoxide query -l | fzf)
-        if [[ -n "$dir" ]]; then
+if type -q zoxide; and type -q fzf
+    function zi
+        set dir (zoxide query -l | fzf)
+        if test -n "$dir"
             cd "$dir"
-        fi
-    }}
-fi
+        end
+    end
+end
 
-# ---- eza (ls replacement on 'l') ----
-if command -v eza &>/dev/null; then
-    alias l="eza -lh --icons --git --group-directories-first"
-fi
 
-# ---- kitty shell integration ----
-if [[ "$TERM" == "xterm-kitty" ]]; then
-    source <(kitty + complete setup zsh 2>/dev/null) || true
-fi
+# eza (ls replacement on 'l')
+if type -q eza
+    alias l "eza -lh --icons --git --group-directories-first"
+end
+
+
+
+
 {END_MARK}
 """
 
+
 def main():
     TARGET.parent.mkdir(parents=True, exist_ok=True)
+
     if TARGET.exists():
         content = TARGET.read_text(encoding="utf-8")
     else:
@@ -77,14 +81,17 @@ def main():
 
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     backup = TARGET.with_suffix(TARGET.suffix + f".bak.{ts}")
+
     if TARGET.exists():
         shutil.copy2(TARGET, backup)
         print(f"[OK] Backup created: {backup}")
 
     new_content = content.rstrip() + ("\n\n" if content.strip() else "") + BLOCK + "\n"
     TARGET.write_text(new_content, encoding="utf-8")
-    print("[OK] Workflow configuration added to ~/.zshrc.")
-    print("Restart zsh or run: exec zsh")
+
+    print("[OK] Workflow configuration added to fish.")
+    print("Restart fish or run: exec fish")
+
 
 if __name__ == "__main__":
     main()

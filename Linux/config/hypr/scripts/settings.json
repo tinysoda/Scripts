@@ -1,0 +1,8 @@
+{
+  "uiScale": 1.0,
+  "openGuideAtStartup": true,
+  "topbarHelpIcon": true,
+  "wallpaperDir": "/home/valiant/Pictures/Wallpapers",
+  "language": "us",
+  "kbOptions": "grp:ctrl_shift_toggle"
+}
