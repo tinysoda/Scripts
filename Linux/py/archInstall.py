@@ -3,9 +3,8 @@ import subprocess
 import sys
 
 def installArch():
-    commandArch = ["yay", "-Sy","--noconfirm"]
+    commandArch = ["paru", "-Sy","--noconfirm"]
     listToInstall = [        
-        "zip",
         "input-leap-bin",
         "okular",
         "syncthing",
@@ -18,8 +17,8 @@ def installArch():
         "qbittorrent",
     ]
     commandArch.extend(listToInstall)
-    if not shutil.which("yay"):
-        subprocess.run(["pacman", "-Sy", "yay","--noconfirm"], check=True)
+    if not shutil.which("paru"):
+        subprocess.run(["pacman", "-Sy", "paru","--noconfirm"], check=True)
     subprocess.run(commandArch, check=True)
     print("\n✅ System update completed successfully.")
     sys.exit(0)
