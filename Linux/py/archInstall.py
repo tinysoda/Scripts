@@ -5,12 +5,12 @@ import sys
 def installArch():
     commandArch = ["paru", "-Sy","--noconfirm"]
     listToInstall = [        
-        "input-leap-bin",
+        #"input-leap-bin",
         "okular",
         "syncthing",
-        "github-cli",
-        "lazygit",
-        "vscodium-bin",
+        #"github-cli",
+        #"lazygit",
+        "visual-studio-code-bin",
         "telegram-desktop-bin",
         "fzf",
         "zoxide",
