@@ -15,6 +15,8 @@ def installArch():
         "fzf",
         "zoxide",
         "qbittorrent",
+        "ludusavi-bin",
+        "joplin-bin",
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
