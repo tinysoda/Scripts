@@ -5,7 +5,7 @@ import sys
 def installArch():
     commandArch = ["paru", "-Sy","--noconfirm"]
     listToInstall = [        
-        #"input-leap-bin",
+        "input-leap-bin",
         "okular",
         "syncthing",
         #"github-cli",
@@ -16,7 +16,9 @@ def installArch():
         "zoxide",
         "qbittorrent",
         "ludusavi-bin",
-        "joplin-bin",
+        "obsidian-bin",
+        "stremio",
+        "ab-download-manager-bin"
     ]
     commandArch.extend(listToInstall)
     if not shutil.which("paru"):
